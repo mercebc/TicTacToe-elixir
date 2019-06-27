@@ -12,4 +12,6 @@ defmodule Board do
     end
   end
 
+  def is_full(board), do: !Enum.any?(board, fn x -> x == "" end)
+
 end
