@@ -6,4 +6,5 @@ defmodule Board do
   def register(mark, position, board) do
     List.replace_at(board, position, mark)
   end
+
 end
