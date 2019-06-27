@@ -5,5 +5,6 @@ defmodule HumanTest do
   test "creates a human player" do
     assert Human.new("X") == %Player{mark: "X"}
   end
+
 end
 

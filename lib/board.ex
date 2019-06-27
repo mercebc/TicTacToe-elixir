@@ -3,8 +3,8 @@ defmodule Board do
     Enum.to_list(1..size*size)
   end
 
-  def register(mark, position, board) do
-    List.replace_at(board, position, mark)
+  def register(board, player, position) do
+    List.replace_at(board, position, player.mark)
   end
 
 end
