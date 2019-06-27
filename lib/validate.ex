@@ -6,5 +6,5 @@ defmodule Validate do
     end
   end
 
-  def position_in_board(board, position), do: Enum.at(board, position-1)
+  def position_in_board(board, position), do: Enum.at(board, position)
 end
