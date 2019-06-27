@@ -3,13 +3,14 @@ defmodule BoardTest do
   doctest Board
 
   test "creates a board" do
-    assert Board.new(3) == [1,2,3,4,5,6,7,8,9]
+    assert Board.new(3) == ["","","","","","","","",""]
   end
 
   test "register a mark in a position" do
-    board = [1,2,3,4,5,6,7,8,9]
+    board = ["","","","","","","","",""]
     player = %Player{mark: "X"}
-    assert Board.register(board,player, 1) == [1,"X",3,4,5,6,7,8,9]
+    assert Board.register(board,player, 1) == ["","X","","","","","","",""]
+
   end
 
 end

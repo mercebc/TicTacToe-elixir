@@ -3,9 +3,10 @@ defmodule DisplayTest do
   import ExUnit.CaptureIO
   doctest Display
 
-  test "can display a message" do
+  test "can display a formatted board" do
+    board = ["","X","","O","","","X","",""]
     assert capture_io(fn ->
-      Display.message("Please try again")
-    end) == "Please try again"
+      Display.board(board)
+    end) == "1 | X | 3\nO | 5 | 6\nX | 8 | 9\n"
   end
 end

@@ -1,7 +1,7 @@
 defmodule Board do
   alias Validate
 
-  def new(size), do: Enum.to_list(1..size*size)
+  def new(size), do: List.duplicate("", size*size)
 
   defp mark(board, player, position), do: List.replace_at(board, position, player.mark)
 
