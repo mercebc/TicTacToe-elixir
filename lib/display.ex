@@ -13,7 +13,7 @@ defmodule Display do
   end
 
 
-  def ask_for_position, do: IO.gets("Please insert a position\n")
+  def ask_for_position(mark), do: IO.gets("Please "<>mark<>", insert a position\n")
 
   def position_numbers(board) do
     position = Enum.find_index(board, fn x -> x == "" end)

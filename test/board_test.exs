@@ -9,7 +9,7 @@ defmodule BoardTest do
   test "register a mark in a position" do
     board = ["","","","","","","","",""]
     player = %Player{mark: "X"}
-    assert Board.register(board,player, 1) == ["","X","","","","","","",""]
+    assert Board.register(player, board, 1) == ["","X","","","","","","",""]
   end
 
   test "the board is full" do
