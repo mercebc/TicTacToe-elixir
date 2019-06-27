@@ -1,4 +1,4 @@
 defmodule Player do
-  defstruct mark: "X"
+  defstruct [:mark]
 end
 
