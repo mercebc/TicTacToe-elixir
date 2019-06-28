@@ -26,4 +26,9 @@ defmodule BoardTest do
     board = ["X","","O","X","X","O","O","X","O"]
     assert Board.is_full(board) == false
   end
+
+  test "available positions of a board" do
+    board = ["X","","O","X","","O","","X","O"]
+    assert Board.available_positions(board) == [1, 4, 6]
+  end
 end

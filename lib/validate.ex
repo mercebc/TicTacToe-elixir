@@ -1,10 +1,9 @@
 defmodule Validate do
   def is_position_available(board, position) do
-    case position_in_board(board, position) do
-      "" -> {:valid, :positionAvailable}
-      _ -> {:error, :positionTaken}
+    case Enum.member?(Board.available_positions(board), position) do
+      true -> {:valid, :positionAvailable}
+      false -> {:error, :positionTaken}
     end
   end
 
-  def position_in_board(board, position), do: Enum.at(board, position)
 end

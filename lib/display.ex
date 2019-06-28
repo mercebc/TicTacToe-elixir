@@ -27,4 +27,5 @@ defmodule Display do
     |> Enum.map(fn({_, index}) -> List.replace_at(board, index, index) end)
   end
 
+
 end

@@ -21,4 +21,11 @@ defmodule Board do
 
   def is_full(board), do: !Enum.any?(board, fn x -> x == "" end)
 
+  def available_positions(board) do
+    board
+    |> Enum.with_index
+    |> Enum.reject(fn ({value, _}) -> value != "" end)
+    |> Enum.map(fn ({_, position}) -> position end)
+  end
+
 end
