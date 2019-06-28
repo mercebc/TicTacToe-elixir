@@ -22,8 +22,9 @@ defmodule Display do
   end
 
   def position_numbers(board) do
-    position = Enum.find_index(board, fn x -> x == "" end)
-    List.replace_at(board, position, Integer.to_string(position + 1))
+    board
+    |> Enum.with_index
+    |> Enum.map(fn({_, index}) -> List.replace_at(board, index, index) end)
   end
 
 end
