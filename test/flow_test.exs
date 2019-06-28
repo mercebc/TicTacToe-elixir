@@ -3,15 +3,25 @@ defmodule FlowTest do
   import ExUnit.CaptureIO
   doctest Flow
 
-  test "swap players" do
+  test "X wins" do
     players = [%Player{mark: "X"}, %Player{mark: "O"}]
-    assert Flow.swap_players(players) == [%Player{mark: "O"}, %Player{mark: "X"}]
+    assert capture_io([input: "1\n2\n3\n4\n5\n6\n7\n", capture_prompt: false], fn ->
+      Flow.start(players,3)
+    end) =~ "X is a winner"
   end
 
-  test "plays until full board" do
+  test "O wins" do
     players = [%Player{mark: "X"}, %Player{mark: "O"}]
-    assert capture_io([input: "1\n2\n3\n4\n5\n6\n7\n8\n9\n", capture_prompt: false], fn ->
+    assert capture_io([input: "2\n3\n4\n5\n6\n7\n8\n9\n1\n", capture_prompt: false], fn ->
       Flow.start(players,3)
-    end) =~ "End game"
+    end) =~ "O is a winner"
   end
+
+  test "its a draw" do
+    players = [%Player{mark: "X"}, %Player{mark: "O"}]
+    assert capture_io([input: "1\n2\n3\n4\n6\n5\n7\n9\n8\n", capture_prompt: false], fn ->
+      Flow.start(players,3)
+    end) =~ "It's a draw"
+  end
+
 end

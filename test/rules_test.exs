@@ -19,19 +19,21 @@ defmodule RulesTest do
   test "current player is winner" do
     players = [%Player{mark: "X"}, %Player{mark: "O"}]
     board = ["O","X","X","O","O","X","X","O","O"]
-    assert Rules.has_winner(board, players) == [false, true]
+    assert Rules.has_winner(board, players) == %Player{mark: "O"}
   end
 
   test "opponent player is winner" do
     players = [%Player{mark: "X"}, %Player{mark: "O"}]
     board = ["X","O","O","X","X","O","","X","X"]
-    assert Rules.has_winner(board, players) == [true, false]
+    assert Rules.has_winner(board, players) == %Player{mark: "X"}
   end
 
   test "there isnt a winner" do
     players = [%Player{mark: "X"}, %Player{mark: "O"}]
     board = ["","O","O","X","X","O","O","X","X"]
-    assert Rules.has_winner(board, players) == [false, false]
+    assert Rules.has_winner(board, players) == :no_winner
   end
+
+  
 
 end

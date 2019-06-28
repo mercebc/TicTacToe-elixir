@@ -1,9 +1,14 @@
 defmodule Rules do
   alias Board
 
-  def has_winner(board, players) do
+  def has_winner(board, [first, second] = players) do
     players
     |> Enum.map(fn(player) -> is_winner(player, board) end)
+    |> case do
+      [true, _] -> first
+      [_, true] -> second
+      _ -> :no_winner
+    end
   end
 
   defp is_winner(player, board) do
