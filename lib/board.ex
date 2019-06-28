@@ -10,14 +10,7 @@ defmodule Board do
     |> trunc
   end
 
-  defp mark(board, player, position), do: List.replace_at(board, position, player.mark)
-
-  def register(player, board, position) do
-    case Validate.is_position_available(board, position) do
-      {:valid, _} -> mark(board, player, position)
-      {:error, :reason} -> Display.message(:reason)
-    end
-  end
+  def register(board, player, position), do: List.replace_at(board, position, player.mark)
 
   def is_full(board), do: !Enum.any?(board, fn x -> x == "" end)
 

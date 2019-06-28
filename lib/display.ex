@@ -1,4 +1,6 @@
 defmodule Display do
+  alias Validate
+
   def announcement(message), do: IO.puts(message)
 
   def board(board) do
@@ -14,8 +16,17 @@ defmodule Display do
     |> Enum.intersperse("\n")
   end
 
+  def ask_for_position(mark, board) do
+    mark
+    |> position_given
+    |> Validate.is_position_available(board)
+    |> case do
+      {:valid, position} -> position
+      {:error, reason} -> ask_for_position(mark, board)
+    end
+  end
 
-  def ask_for_position(mark) do 
+  defp position_given(mark) do
     {position, _} = IO.gets("Please "<>mark<>", insert a position\n")
     |> Integer.parse
     (position - 1)
@@ -24,8 +35,11 @@ defmodule Display do
   def position_numbers(board) do
     board
     |> Enum.with_index
-    |> Enum.map(fn({_, index}) -> List.replace_at(board, index, index) end)
+    |> Enum.reject(fn ({value, _}) -> value != "" end)
+    |> Enum.map(fn ({_, position}) -> position + 1 end)
   end
+
+
 
 
 end

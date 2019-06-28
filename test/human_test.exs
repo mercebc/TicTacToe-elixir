@@ -9,8 +9,9 @@ defmodule HumanTest do
 
   test "can get a move" do
     player = %Player{mark: "X"}
+    board = ["X","","","","X","","O","",""]
     capture_io([input: "3", capture_prompt: false], fn ->
-      assert Human.get_move(player) == 2
+      assert Human.get_move(player, board) == 2
     end)
   end
 
