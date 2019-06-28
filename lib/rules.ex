@@ -1,6 +1,19 @@
 defmodule Rules do
   alias Board
 
+  def has_winner(board, players) do
+    players
+    |> Enum.map(fn(player) -> is_winner(player, board) end)
+  end
+
+  defp is_winner(player, board) do
+    winning_lines(board)
+    |> Enum.map(fn(line) -> same_mark(line, player) end)
+    |> Enum.any?(fn x -> x == true end)
+  end
+
+  defp same_mark(line, player), do: Enum.all?(line, fn(mark) -> mark == player.mark end)
+
   def winning_lines(board) do
     rows = rows(board)
     rows ++ columns(rows) ++ [left_diagonal(rows)] ++ [right_diagonal(rows)]
