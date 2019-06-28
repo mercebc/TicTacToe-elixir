@@ -6,6 +6,11 @@ defmodule BoardTest do
     assert Board.new(3) == ["","","","","","","","",""]
   end
 
+  test "gets the size of a board" do
+    board = ["X","O","O","X","X","O","O","X","O"]
+    assert Board.size(board) == 3
+  end
+
   test "register a mark in a position" do
     board = ["","","","","","","","",""]
     player = %Player{mark: "X"}

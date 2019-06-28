@@ -3,6 +3,13 @@ defmodule Board do
 
   def new(size), do: List.duplicate("", size*size)
 
+  def size(board) do
+    board
+    |> length
+    |> :math.sqrt
+    |> trunc
+  end
+
   defp mark(board, player, position), do: List.replace_at(board, position, player.mark)
 
   def register(player, board, position) do
