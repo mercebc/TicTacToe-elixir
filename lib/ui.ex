@@ -8,17 +8,36 @@ defmodule UI do
     |> display
   end
 
+  def ask_mode() do
+    Dialog.message(:ask_mode_game)
+    |> get_from_user
+    |> Validate.game_mode
+    |> handle_validation_results(&ask_mode/0)
+  end
+
+  def ask_size() do
+    Dialog.message(:ask_size_board)
+    |> get_from_user
+    |> Validate.size_board
+    |> handle_validation_results(&ask_size/0)
+  end
+
   def ask_position(mark, board) do
-    Dialog.message(:askPosition, mark)
+    Dialog.message(:ask_position, mark)
     |> get_from_user
     |> Validate.position(board)
     |> handle_validation_results(mark, board, &ask_position/2)
   end
 
+  defp handle_validation_results({:valid, number}, _), do: number
   defp handle_validation_results({:valid, position}, _, _, _), do: position
-  defp handle_validation_results({:error, _} = error, mark, board, callback) do
+  defp handle_validation_results({:error, _} = error, ask_again) do
     handle_error(error)
-    callback.(mark, board)
+    ask_again.()
+  end
+  defp handle_validation_results({:error, _} = error, mark, board, ask_again) do
+    handle_error(error)
+    ask_again.(mark, board)
   end
 
   defp handle_error({_, reason}) do

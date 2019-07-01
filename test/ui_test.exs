@@ -18,7 +18,7 @@ defmodule UITest do
     end)
   end
 
-  test "cant register an invalid mark" do
+  test "cant register an invalid number" do
     board = ["","X","","O","","","X","",""]
     player = %Player{mark: "O"}
     capture_io([input: "3p\n5\n", capture_prompt: false], fn ->
@@ -26,4 +26,27 @@ defmodule UITest do
     end)
   end
 
+  test "cant save a size that is an invalid number" do
+    capture_io([input: "3p\n3\n", capture_prompt: false], fn ->
+      assert UI.ask_size == 3
+    end)
+  end
+
+  test "cant save a size that is not 3 or 4" do
+    capture_io([input: "5\n4\n", capture_prompt: false], fn ->
+      assert UI.ask_size == 4
+    end)
+  end
+
+  test "cant save a mode that is an invalid number, then can save human vs random" do
+    capture_io([input: "3p\n2\n", capture_prompt: false], fn ->
+      assert UI.ask_mode == :human_vs_random
+    end)
+  end
+
+  test "cant save a mode that is not in range (1, 2 or 3)" do
+    capture_io([input: "5\n1\n", capture_prompt: false], fn ->
+      assert UI.ask_mode == :human_vs_human
+    end)
+  end
 end

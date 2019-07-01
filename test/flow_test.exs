@@ -24,8 +24,4 @@ defmodule FlowTest do
     end) =~ "It's a draw"
   end
 
-  test "play" do
-    players = [%Player{mark: "X"}, %Player{mark: "O"}]
-    Flow.start(players,3)
-  end
 end

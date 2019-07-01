@@ -7,14 +7,14 @@ defmodule Rules do
     |> who_is_winner(players)
   end
 
-  def who_is_winner([true, _], [first, second]), do: first
-  def who_is_winner([_, true], [first, second]), do: second
+  def who_is_winner([true, _], [first, _]), do: first
+  def who_is_winner([_, true], [_, second]), do: second
   def who_is_winner(_, players), do: :no_winner
 
   defp is_winner(player, board) do
     winning_lines(board)
     |> Enum.map(fn(line) -> same_mark(line, player) end)
-    |> Enum.any?(fn x -> x == true end)
+    |> Enum.any?(fn winning_line -> winning_line == true end)
   end
 
   defp same_mark(line, player), do: Enum.all?(line, fn(mark) -> mark == player.mark end)
