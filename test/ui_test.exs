@@ -38,9 +38,9 @@ defmodule UITest do
     end)
   end
 
-  test "cant save a mode that is an invalid number, then can save human vs random" do
-    capture_io([input: "3p\n2\n", capture_prompt: false], fn ->
-      assert UI.ask_mode == :human_vs_random
+  test "cant save a mode that is an invalid number, then can save human vs human" do
+    capture_io([input: "3p\n1\n", capture_prompt: false], fn ->
+      assert UI.ask_mode == :human_vs_human
     end)
   end
 
