@@ -1,5 +1,9 @@
 defmodule Human do
-  def new(mark), do: %Player{mark: mark}
+  defstruct [:mark]
 
-  def get_move(player, board), do: UI.ask_position(player.mark, board)
+  def new(mark), do: %Human{mark: mark}
+
+  defimpl Player, for: Human do
+    def get_move(player, board), do: UI.ask_position(player.mark, board)
+  end
 end

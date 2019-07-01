@@ -12,7 +12,7 @@ defmodule UITest do
 
   test "cant register mark in a position already taken" do
     board = ["","X","","O","","","X","",""]
-    player = %Player{mark: "O"}
+    player = %Human{mark: "O"}
     capture_io([input: "2\n5\n", capture_prompt: false], fn ->
       assert UI.ask_position(player.mark, board) == 4
     end)
@@ -20,7 +20,7 @@ defmodule UITest do
 
   test "cant register an invalid number" do
     board = ["","X","","O","","","X","",""]
-    player = %Player{mark: "O"}
+    player = %Human{mark: "O"}
     capture_io([input: "3p\n5\n", capture_prompt: false], fn ->
       assert UI.ask_position(player.mark, board) == 4
     end)

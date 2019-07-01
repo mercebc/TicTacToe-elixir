@@ -17,7 +17,7 @@ defmodule Flow do
   defp swap_players([first, second]), do: [second, first]
 
   defp make_move(board, [current, _]) do
-    position = Human.get_move(current, board)
+    position = Player.get_move(current, board)
     Board.register(board, current, position)
   end
 
