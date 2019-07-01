@@ -11,6 +11,7 @@ defmodule Dialog do
 
   def message(code, mark) do
     case code do
+      :random_position -> "Random computer(#{mark})'s turn"
       :ask_position -> "Please #{mark}, type a position\n"
       :winner -> "Yayyy! #{mark} is the winner!!!\n"
     end
