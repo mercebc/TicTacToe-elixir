@@ -6,7 +6,7 @@ defmodule Flow do
   def start(players, size), do: play(Board.new(size), players)
 
   def play(board, players) do
-    Display.board(board)
+    UI.display_board(board)
     if !game_over(board, players) do
       board = make_move(board, players)
       players = swap_players(players)
@@ -29,17 +29,22 @@ defmodule Flow do
   end
 
   defp announce_winner(winner) do
-    Display.announcement(winner.mark <> " is a winner")
-    true
+    Dialog.message(:winner, winner.mark)
+    |> UI.display
+    game_finished
   end
 
   defp is_draw(board) do
     if Board.is_full(board) do
-      Display.announcement("It's a draw")
-      true
+      Dialog.message(:is_draw)
+      |> UI.display
+      game_finished
     else
-      false
+      continue_playing
     end
   end
+
+  defp continue_playing, do: false
+  defp game_finished, do: true
 
 end
