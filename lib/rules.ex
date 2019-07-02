@@ -11,7 +11,7 @@ defmodule Rules do
   def who_is_winner([_, true], [_, second]), do: second
   def who_is_winner(_, players), do: :no_winner
 
-  defp is_winner(player, board) do
+  def is_winner(player, board) do
     winning_lines(board)
     |> Enum.map(fn(line) -> same_mark(line, player) end)
     |> Enum.any?(fn winning_line -> winning_line == true end)

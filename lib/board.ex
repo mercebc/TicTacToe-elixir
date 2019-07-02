@@ -21,4 +21,6 @@ defmodule Board do
     |> Enum.map(fn ({_, position}) -> position end)
   end
 
+  def reset_position(board, position), do: List.replace_at(board, position, "")
+
 end

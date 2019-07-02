@@ -1,7 +1,7 @@
 defmodule Validate do
 
   def game_mode(mode) do
-    case is_number_in_range(mode, 1, 2) do
+    case is_number_in_range(mode, 1, 3) do
       {:valid, mode} -> {:valid, mode_tag(mode)}
       error -> error
     end
@@ -11,6 +11,7 @@ defmodule Validate do
     case mode do
       1 -> :human_vs_human
       2 -> :human_vs_random
+      3 -> :human_vs_super
     end
   end
 
