@@ -1,4 +1,3 @@
-defmodule Player do
-  defstruct mark: "X"
+defprotocol Player do
+  def get_move(player, board)
 end
-
