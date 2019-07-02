@@ -57,4 +57,5 @@ defmodule SuperComputer do
     def lowest_score(positions_scores), do: Enum.min_by(positions_scores, fn map -> map.score end).score
 
   end
+  A
 end
