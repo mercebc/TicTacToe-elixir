@@ -20,15 +20,15 @@ In order to accelerate that process, a good solution could be to implement alpha
 ## Run me
 In order to Run the game you need to clone the this github directory to your laptop.
 
-'git clone git@github.com:mercebc/TicTacToe-elixir.git'
+`git clone git@github.com:mercebc/TicTacToe-elixir.git`
 
 Open the directory
 
-'cd TicTacToe-elixir'
+`cd TicTacToe-elixir`
 
 Run the game
 
-'mix start'
+`mix start`
 
 ### And have fun playing!
 
@@ -36,9 +36,9 @@ Run the game
 
 Open the directory
 
-'cd TicTacToe-elixir'
+`cd TicTacToe-elixir`
 
 Run the tests
 
-'mix test'
+`mix test`
 
