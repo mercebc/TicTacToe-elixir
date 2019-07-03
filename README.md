@@ -16,6 +16,9 @@ Adding the option to play in a 4x4 board when playing against a super computer m
 Currently minimax (the algorithm used in the super computer player to get the best position) has to evaluate ALL the possible moves to retrieve the best one, and in a 4x4 board there are lots of possible moves at the beginning of the game.
 In order to accelerate that process, a good solution could be to implement alpha beta pruning, where it is not necessary to evaluate all the possible moves, when the algorithm finds a good move, it doesn't continue evaluating all the board.
 
+## Tech requirements to play :wrench:
+Having (elixir)[https://elixir-lang.org/install.html] installed
+
 
 ## Run me :runner:
 In order to Run the game you need to clone the this github directory to your laptop.

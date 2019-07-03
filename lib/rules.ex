@@ -44,5 +44,4 @@ defmodule Rules do
     |> Enum.reverse
     |> left_diagonal
   end
-
 end

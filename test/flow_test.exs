@@ -24,4 +24,26 @@ defmodule FlowTest do
     end) =~ "It's a draw"
   end
 
+  test "swaps players" do
+    players = [%Human{mark: "X"}, %Human{mark: "O"}]
+    assert Flow.swap_players(players) == [%Human{mark: "O"}, %Human{mark: "X"}]
+  end
+
+  test "the game is over if game has a winner" do
+    players = [%Human{mark: "X"}, %Human{mark: "O"}]
+    board = ["X","O","O","X","X","O","X","X","O"]
+    assert Flow.game_over(board, players) == true
+  end
+
+  test "the game is over if it is a draw" do
+    players = [%Human{mark: "X"}, %Human{mark: "O"}]
+    board = ["X","O","X","X","X","O","O","X","O"]
+    assert Flow.game_over(board, players) == true
+  end
+
+  test "the game continues if not a win or a draw" do
+    players = [%Human{mark: "X"}, %Human{mark: "O"}]
+    board = ["X","O","O","","X","O","","X",""]
+    assert Flow.game_over(board, players) == false
+  end
 end

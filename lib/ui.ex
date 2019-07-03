@@ -1,6 +1,6 @@
 defmodule UI do
-  def display(message), do: IO.puts(message)
-  def get_from_user(message), do: IO.gets(message)
+  defp display(message), do: IO.puts(message)
+  defp get_from_user(message), do: IO.gets(message)
 
   def display_message(label) do
     label
