@@ -1,7 +1,7 @@
 defmodule Flow do
   def start(players, size), do: play(Board.new(size), players)
 
-  def play(board, players) do
+  defp play(board, players) do
     UI.display_board(board)
     if !game_over(board, players) do
       board = make_move(board, players)

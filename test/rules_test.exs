@@ -19,5 +19,4 @@ defmodule RulesTest do
     board = ["","O","O","X","X","O","O","X","X"]
     assert Rules.has_winner(board, players) == :no_winner
   end
-
 end

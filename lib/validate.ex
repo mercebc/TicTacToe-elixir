@@ -14,13 +14,6 @@ defmodule Validate do
     end
   end
 
-  def size_board(size) do
-    case is_number_in_range(size, 3, 4) do
-      {:ok, size} -> {:ok, size}
-      error -> error
-    end
-  end
-
   def position(position, board) do
     case is_number_in_range(position, 1, length(board)) do
       {:ok, position} -> is_position_available(position-1, board)
