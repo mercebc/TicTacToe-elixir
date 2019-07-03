@@ -26,18 +26,6 @@ defmodule UITest do
     end)
   end
 
-  test "cant save a size that is an invalid number" do
-    capture_io([input: "3p\n3\n", capture_prompt: false], fn ->
-      assert UI.ask_size == 3
-    end)
-  end
-
-  test "cant save a size that is not 3 or 4" do
-    capture_io([input: "5\n4\n", capture_prompt: false], fn ->
-      assert UI.ask_size == 4
-    end)
-  end
-
   test "cant save a mode that is an invalid number, then can save human vs human" do
     capture_io([input: "3p\n1\n", capture_prompt: false], fn ->
       assert UI.ask_mode == :human_vs_human

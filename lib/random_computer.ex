@@ -4,9 +4,8 @@ defmodule RandomComputer do
   def new(mark), do: %RandomComputer{mark: mark}
 
   defimpl Player, for: RandomComputer do
-    def get_move(randomComputer, board, _players) do
-      Dialog.message(:random_position, randomComputer.mark)
-      |> UI.display
+    def get_position(randomComputer, board, _players) do
+      UI.display_message(:random_position, randomComputer.mark)
       board
       |> Board.available_positions
       |> Enum.random
