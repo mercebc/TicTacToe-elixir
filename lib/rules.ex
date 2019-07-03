@@ -7,7 +7,7 @@ defmodule Rules do
 
   defp who_is_winner([true, _], [first, _]), do: first
   defp who_is_winner([_, true], [_, second]), do: second
-  defp who_is_winner(_, players), do: :no_winner
+  defp who_is_winner(_, _players), do: :no_winner
 
   defp is_winner(player, board) do
     winning_lines(board)
