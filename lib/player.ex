@@ -1,3 +1,3 @@
 defprotocol Player do
-  def get_move(player, board)
+  def get_position(player, board, players)
 end

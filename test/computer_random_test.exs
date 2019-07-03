@@ -7,9 +7,9 @@ defmodule RandomComputerTest do
   end
 
   test "can get a move" do
-    player = %RandomComputer{mark: "X"}
+    players = [%RandomComputer{mark: "X"}, %Human{mark: "O"}]
     board = ["X","","","","X","","O","",""]
-    assert Player.get_move(player, board) in Board.available_positions(board)
+    assert Player.get_position(List.first(players), board, players) in Board.available_positions(board)
   end
 
 end

@@ -1,6 +1,4 @@
 defmodule Board do
-  alias Validate
-
   def new(size), do: List.duplicate("", size*size)
 
   def size(board) do
@@ -20,5 +18,4 @@ defmodule Board do
     |> Enum.reject(fn ({value, _}) -> value != "" end)
     |> Enum.map(fn ({_, position}) -> position end)
   end
-
 end

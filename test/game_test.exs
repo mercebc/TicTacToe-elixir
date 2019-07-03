@@ -3,7 +3,4 @@ defmodule GameTest do
   import ExUnit.CaptureIO
   doctest Game
 
-  test "I can create a game" do
-  end
-
 end

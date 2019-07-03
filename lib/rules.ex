@@ -1,15 +1,13 @@
 defmodule Rules do
-  alias Board
-
   def has_winner(board, players) do
     players
     |> Enum.map(fn(player) -> is_winner(player, board) end)
     |> who_is_winner(players)
   end
 
-  def who_is_winner([true, _], [first, _]), do: first
-  def who_is_winner([_, true], [_, second]), do: second
-  def who_is_winner(_, players), do: :no_winner
+  defp who_is_winner([true, _], [first, _]), do: first
+  defp who_is_winner([_, true], [_, second]), do: second
+  defp who_is_winner(_, players), do: :no_winner
 
   defp is_winner(player, board) do
     winning_lines(board)
@@ -19,7 +17,7 @@ defmodule Rules do
 
   defp same_mark(line, player), do: Enum.all?(line, fn(mark) -> mark == player.mark end)
 
-  def winning_lines(board) do
+  defp winning_lines(board) do
     rows = rows(board)
     rows ++ columns(rows) ++ [left_diagonal(rows)] ++ [right_diagonal(rows)]
   end
